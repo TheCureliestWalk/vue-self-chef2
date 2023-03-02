@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Noto Sans Thai', sans-serif;
+}
+
+h1 {
+    @apply font-bold text-2xl;
+}
+
+h2 {
+    @apply font-bold text-xl;
+}
+
+h3 {
+    @apply font-bold text-lg;
+}
+
+.form-control-custom {
+    @apply flex flex-col gap-3 max-w-md mx-auto mt-3 mb-4;
+}
+
+.form-control-custom input {
+    @apply p-4 border;
+}
+
+.form-control-custom input:disabled {
+    @apply p-4 border;
+}
+
+.form-control-custom input:focus {
+    @apply text-amber-500;
+}
+
+.form-control-custom textarea {
+     @apply p-4 border;
+}
+
+.form-control-custom textarea:focus {
+    @apply text-amber-500 outline-amber-300;
+}
+
+
+.form-control-custom button {
+    @apply w-full bg-amber-300 text-white p-2 mt-2 mb-2.5;
+}
+
+.form-control-custom button:hover {
+    @apply bg-amber-500;
+}
+
+li {
+    @apply list-disc list-inside;
+}
+
+nav div a {
+   @apply hover:underline underline-offset-4 decoration-2 decoration-amber-400 
+}
+
+nav div a.router-link-active{
+   @apply underline underline-offset-4 decoration-2 decoration-amber-500
+}
+
