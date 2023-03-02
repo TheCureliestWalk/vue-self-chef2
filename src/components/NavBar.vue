@@ -63,7 +63,9 @@ const logout = async () => {
 
         <li>
           <RouterLink to="/about">
-            <About class="w-4 h-4" />เกี่ยวกับ</RouterLink>
+            <About class="w-4 h-4" />
+            เกี่ยวกับ
+          </RouterLink>
         </li>
         <li v-if="user.session">
           <RouterLink to="/account">

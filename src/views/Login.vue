@@ -27,20 +27,9 @@ const login = async () => {
 <template>
   <form @submit.prevent="login" class="form-control-custom">
     <label for="email">ชื่อผู้ใช้/อีเมลล์</label>
-    <input type="text" name="email" id="email" placeholder="" v-model="email" />
+    <input type="text" name="email" id="email" placeholder="john@doe.com" v-model="email" />
     <label for="password">รหัสผ่าน</label>
-    <input type="password" name="password" id="password" placeholder="" v-model="password" />
+    <input type="password" name="password" id="password" placeholder="รหัสผ่านที่เคยสมัคร" v-model="password" />
     <button type="submit">เข้าสู่ระบบ</button>
   </form>
-
 </template>
-
-<style scoped>
-input {
-    @apply max-w-sm border p-2 ml-3;
-}
-
-input:focus {
-    @apply ring-2 ring-amber-300 outline-none;
-}
-</style>

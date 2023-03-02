@@ -25,7 +25,6 @@ let isChecked = ref();
         <input type="checkbox" class="toggle toggle-primary" :checked="isChecked" />
       </label>
     </div>
-
   </div>
 </template>
 

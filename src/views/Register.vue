@@ -9,13 +9,3 @@
     <button type="submit">สมัครสมาชิก</button>
   </form>
 </template>
-
-<style scoped>
-input {
-    @apply max-w-sm border p-2 ml-3;
-}
-
-input:focus {
-    @apply ring-2 ring-amber-300 outline-none;
-}
-</style>

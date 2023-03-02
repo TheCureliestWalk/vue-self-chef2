@@ -18,8 +18,8 @@ let user = userStore();
       <li>นายควย 67xxxxxxx-x</li>
     </ul>
   </div>
-<!--TEST PURPOSE-->
-<!--  <p>Count: {{ store.count }}</p>-->
-<!--  <button @click="store.increment()" class="bg-red-200 p-2">+</button>-->
-<!--  <button @click="store.decrement()" class="bg-amber-200 p-2">-</button>-->
+  <!--TEST PURPOSE-->
+  <!--  <p>Count: {{ store.count }}</p>-->
+  <!--  <button @click="store.increment()" class="bg-red-200 p-2">+</button>-->
+  <!--  <button @click="store.decrement()" class="bg-amber-200 p-2">-</button>-->
 </template>

@@ -17,20 +17,20 @@ const onSubmitEvent = async () => {
   const fileExt = imageFile.name.split(".").pop();
   const filePath = `${Math.random()}.${fileExt}`;
   const { error } = await supabase.storage.from("foods").upload(filePath, imageFile, {
-    cacheControl: '3600',
-    upsert: true
+    cacheControl: "3600",
+    upsert: true,
   });
   if (error) {
     throw error;
   }
 
-  const { data } = await supabase.from('foods').insert({
+  const { data } = await supabase.from("foods").insert({
     name: newList.value,
     description: listDescription.value,
-    picture_url: filePath
-  })
+    picture_url: filePath,
+  });
   if (data) {
-    toastr.success('เพิ่มรายการสำเร็จ!');
+    toastr.success("เพิ่มรายการสำเร็จ!");
   }
 };
 </script>
