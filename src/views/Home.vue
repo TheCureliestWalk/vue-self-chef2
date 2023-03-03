@@ -1,11 +1,11 @@
 <script setup>
 import PopularIngredient from "@/components/PopularIngredient.vue";
 import RecommendedMenu from "@/components/RecommendedMenu.vue";
-import Search from "@/components/Search.vue";
+import InstantSearch from "@/components/InstantSearch.vue";
 </script>
 
 <template>
-  <Search />
+  <InstantSearch />
   <PopularIngredient />
   <RecommendedMenu />
 </template>

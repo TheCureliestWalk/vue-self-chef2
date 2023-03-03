@@ -23,7 +23,7 @@ onMounted(async () => {
           {{ x.description }}
         </p>
         <div class="flex flex-row-reverse mt-2">
-          <button class="flex gap-2 items-center bg-amber-400 hover:bg-amber-300 text-white px-2 rounded">
+          <button class="flex p-1.5 gap-2 items-center bg-amber-400 hover:bg-amber-500 text-white text-sm px-2 rounded">
             <HeartBookmark />
             <span>บันทึก</span>
           </button>

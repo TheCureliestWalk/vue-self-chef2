@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.8.0",
-    "algoliasearch": "^4.14.3",
+    "algoliasearch": "^4.15.0",
     "bootstrap-icons": "^1.10.3",
     "daisyui": "^2.51.1",
+    "instantsearch.css": "^8.0.0",
     "pinia": "^2.0.28",
+    "swiper": "^9.1.0",
     "toastr": "^2.1.4",
     "vue": "^3.2.45",
+    "vue-instantsearch": "^4.8.5",
     "vue-router": "^4.1.6",
     "vuetify": "^3.1.6"
   },

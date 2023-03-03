@@ -18,8 +18,12 @@ const vuetify = createVuetify({
   directives,
 })
 
+// Algolia
+import InstantSearch from 'vue-instantsearch/vue3/es';
+
 const app = createApp(App);
 
 app.use(createPinia());
 app.use(router);
+app.use(InstantSearch);
 app.use(vuetify).mount("#app");
