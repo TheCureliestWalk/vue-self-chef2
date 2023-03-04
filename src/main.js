@@ -8,18 +8,18 @@ import "@/assets/app.css";
 import "../node_modules/toastr/build/toastr.css";
 
 // Vuetify
-import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+import "vuetify/styles";
+import { createVuetify } from "vuetify";
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
 
 const vuetify = createVuetify({
   components,
   directives,
-})
+});
 
 // Algolia
-import InstantSearch from 'vue-instantsearch/vue3/es';
+import InstantSearch from "vue-instantsearch/vue3/es";
 
 const app = createApp(App);
 

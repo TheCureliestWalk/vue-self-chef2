@@ -9,6 +9,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.12",
+    "@heroicons/vue": "^2.0.16",
     "@supabase/supabase-js": "^2.8.0",
     "algoliasearch": "^4.15.0",
     "bootstrap-icons": "^1.10.3",

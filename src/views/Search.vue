@@ -10,16 +10,13 @@
 </template>
 
 <script>
-import algoliasearch from 'algoliasearch/lite';
-import 'instantsearch.css/themes/satellite-min.css';
+import algoliasearch from "algoliasearch/lite";
+import "instantsearch.css/themes/satellite-min.css";
 
 export default {
   data() {
     return {
-      searchClient: algoliasearch(
-        'YDL2PFZSFR',
-        '8b4da0f7eda0ee4158af58f6ab80dd0a'
-      ),
+      searchClient: algoliasearch("YDL2PFZSFR", "8b4da0f7eda0ee4158af58f6ab80dd0a"),
     };
   },
 };

@@ -42,7 +42,7 @@ const router = createRouter({
       name: "newlist",
       component: () => import("../views/NewList.vue"),
     },
-          {
+    {
       path: "/search",
       name: "search",
       component: () => import("../views/Search.vue"),
