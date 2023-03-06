@@ -25,6 +25,7 @@ const login = async () => {
 </script>
 
 <template>
+  <h1 class="flex justify-center">เข้าสู่ระบบ</h1>
   <form @submit.prevent="login" class="form-control-custom">
     <label for="email">ชื่อผู้ใช้/อีเมลล์</label>
     <input type="text" name="email" id="email" placeholder="john@doe.com" v-model="email" />

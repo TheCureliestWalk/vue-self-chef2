@@ -71,7 +71,7 @@ onMounted(async () => {
       <div class="fixed inset-0 bg-black/30 backdrop-blur" aria-hidden="true" />
       <div class="fixed inset-0 overflow-y-auto">
         <div class="flex min-h-full items-center justify-center p-4">
-          <DialogPanel class="w-full max-w-xl rounded bg-white shadow-lg">
+          <DialogPanel class="w-full max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl rounded bg-white shadow-lg">
             <DialogTitle class="flex flex-col justify-end text-white font-bold leading-6  w-full object-cover object-center h-64 bg-[url('./bg.jpg')]">
               <h1 class="pt-4 pl-4 text-4xl w-full bg-slate-700 bg-opacity-70">{{ modalData.name ?? "ไม่ได้ระบุ" }}</h1>
           </DialogTitle>
@@ -84,14 +84,12 @@ onMounted(async () => {
               <p>{{  modalData.step ?? "ไม่ได้ระบุ" }}</p>
               <h2>แท็ก</h2>
               <ul class="flex gap-3">
-                <li v-for="tag in modalData.tag" class="list-none rounded bg-pink-100 hover:bg-pink-300 text-pink-700 px-1 cursor-pointer">{{ tag ?? "ไม่ได้ระบุ" }}</li>
+                <li v-for="tag in modalData.tag" class="list-none rounded bg-pink-100 hover:bg-pink-300 text-pink-700 px-2 py-1 cursor-pointer">{{ tag ?? "ไม่ได้ระบุ" }}</li>
               </ul>
               <h2>อ้างอิง</h2>
               <ul class="flex gap-3">
-                  <li class="list-none rounded bg-blue-100 hover:bg-blue-300 text-blue-700 px-2 cursor-pointer">{{ modalData.source ?? "ไม่ได้ระบุ" }}</li>
+                  <li class="list-none rounded bg-blue-100 hover:bg-blue-300 text-blue-700 px-2 py-1 cursor-pointer">{{ modalData.source ?? "ไม่ได้ระบุ" }}</li>
                 </ul>
-              
-            
             </DialogDescription>
             <div class="flex flex-row-reverse gap-4 mb-4 px-4">
               <button @click="setIsOpen(false)" class="py-2 px-4 rounded bg-purple-200 hover:bg-purple-300 text-purple-700">ไปยังเว็บไซต์ต้นทาง</button>
@@ -130,14 +128,14 @@ onMounted(async () => {
     <div v-for="x in foodSearchResult" :key="x.id" class="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer hover:-translate-y-4 hover:scale-110 duration-100" @click="fireModal(x)">
       <img class="w-full object-cover h-48" :src="x.picture_url" :alt="x.name" />
       <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">{{ x.name ?? "NO NAME" }}</div>
+        <div class="font-bold text-xl mb-2">{{ x.name ?? "ไม่ได้ระบุ" }}</div>
         <p class="text-gray-700 text-base">
-          {{ x.description ?? "NO DESCRIPTION" }}
+          {{ x.description ?? "ไม่ได้ระบุ" }}
         </p>
       </div>
       <div class="px-6 pt-4 pb-2 cursor-pointer">
         <h3 class="text-sm mb-1">แท็ก</h3>
-        <span v-for="tag in x.tag" class="inline-block bg-pink-100 hover:bg-pink-200 rounded-full px-3 py-1 text-xs font-semibold text-pink-700 mr-2 mb-2">#{{ tag ?? "No Tag" }}</span>
+        <span v-for="tag in x.tag" class="inline-block bg-pink-100 hover:bg-pink-200 rounded-full px-3 py-1 text-xs font-semibold text-pink-700 mr-2 mb-2">#{{ tag ?? "ไม่ได้ระบุ" }}</span>
       </div>
       <!-- Action buttons -->
       <div class="flex w-full justify-center p-1">
@@ -167,9 +165,9 @@ onMounted(async () => {
     <div v-for="x in ingredientSearchResult" class="max-w-sm rounded overflow-hidden shadow-lg mx-auto hover:shadow-xl hover:backdrop-brightness-70 hover:bg-white/90 hover:-translate-y-4 hover:scale-110 duration-100" @click="fireModal(x)">
       <img class="w-full object-cover h-48" :src="x.picture_url" :alt="x.name" />
       <div class="px-6 py-6">
-        <div class="font-bold text-xl mb-2">{{ x.name }}</div>
+        <div class="font-bold text-xl mb-2">{{ x.name ?? "ไม่ได้ระบุ" }}</div>
         <p class="text-gray-700 text-base">
-          {{ x.description }}
+          {{ x.description ?? "ไม่ได้ระบุ" }}
         </p>
       </div>
     </div>

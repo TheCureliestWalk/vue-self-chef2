@@ -10,6 +10,7 @@ import { userStore } from "../stores/user";
 import { supabase } from "../lib/supabase";
 import router from "../router";
 import toastr from "toastr/toastr";
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 
 const user = userStore();
 
