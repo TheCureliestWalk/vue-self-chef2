@@ -10,12 +10,16 @@ let user = userStore();
     <h1>เกี่ยวกับ</h1>
     <p>เว็บไซต์นี้ได้จัดทำเนื่องจากโปรเจควิชา Entrepreneur Spirit Incubation (ESI) โดยมีสมชิกกลุ่มดังนี้</p>
     <ul>
-      <li>นายควย 62xxxxxxx-x</li>
-      <li>นายควย 63xxxxxxx-x</li>
-      <li>นายควย 64xxxxxxx-x</li>
-      <li>นายควย 65xxxxxxx-x</li>
-      <li>นายควย 66xxxxxxx-x</li>
-      <li>นายควย 67xxxxxxx-x</li>
+      <li><strong>633040426-1</strong> นายอรรถโกวิท ผิวเหลือง   </li>
+      <li><strong>623040019-3</strong> นายไอโฮ โสมนาม  </li>
+      <li><strong>633040607-7</strong> นายเสฎฐวุฒิ นัตธิลม </li>
+      <li><strong>623040011-9</strong> นายประวีร์ ติรวีรขจร  </li>
+      <li><strong>633040419-8</strong> นายพีรพัฒน์ ศิริภักดิ์  </li>
+      <li><strong>613040283-5</strong> นายณภัทร บุญสว่าง  </li>
+      <li><strong>623040607-6</strong> นายพัฒน์สันต์ โอฆะพนม </li>
+      <li><strong>633040620-5</strong> นายวีรพล อุ่นแสง </li>
+      <li><strong>633040621-3</strong> นายศิวกร บุญทศ  </li>
+      <li><strong>643040739-1</strong> นายธัชชัย คำโศ </li>
     </ul>
   </div>
   <!--TEST PURPOSE-->

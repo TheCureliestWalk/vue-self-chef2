@@ -1,7 +1,7 @@
 <script setup>
 import { useUserStore } from "../stores/user";
 
-const user = useUserStore();
+const user = userStore();
 
 const userEmail = user.session.user.email;
 </script>
