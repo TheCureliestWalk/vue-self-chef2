@@ -8,19 +8,19 @@ import HeartBookmark from "@/components/icons/HeartBookmark.vue";
 const searchClient = algoliasearch("YDL2PFZSFR", "8b4da0f7eda0ee4158af58f6ab80dd0a");
 let isLike = ref(false);
 let likeCount = ref(0);
-let likeHandler = (objectID) => { 
-  isLike.value = !isLike.value; 
+let likeHandler = (objectID) => {
+  isLike.value = !isLike.value;
   likeCount.value++;
-  };
+};
 
 let isSaved = ref(false);
 let saveHandler = () => {
   isSaved.value = !isSaved.value;
 };
 let backgroundColor = computed(() => ({
-  'bg-amber-400 hover:bg-amber-500': isSaved.value === false,
-  'bg-gray-400 hover:bg-gray-500': isSaved.value === true
-}))
+  "bg-amber-400 hover:bg-amber-500": isSaved.value === false,
+  "bg-gray-400 hover:bg-gray-500": isSaved.value === true,
+}));
 </script>
 
 <template>
@@ -34,7 +34,7 @@ let backgroundColor = computed(() => ({
         <div class="flex font-bold text-xl mb-2 gap-2 items-center">
           <span>{{ item.name }}</span>
           <div class="flex gap-1 cursor-pointer" @click="likeHandler(item.objectID)">
-            <HeartIcon class="w-4 h-4 " :class="{ 'fill-current': isLike }" />
+            <HeartIcon class="w-4 h-4" :class="{ 'fill-current': isLike }" />
             <span class="text-sm">{{ likeCount }}</span>
           </div>
         </div>
@@ -42,9 +42,9 @@ let backgroundColor = computed(() => ({
           {{ item.description }}
         </p>
         <div class="flex flex-row-reverse mt-2">
-            <button class="flex p-1.5 gap-2 items-center text-white text-sm px-2 rounded" :class="backgroundColor" @click="saveHandler">
+          <button class="flex p-1.5 gap-2 items-center text-white text-sm px-2 rounded" :class="backgroundColor" @click="saveHandler">
             <HeartBookmark />
-            <span>{{ isSaved ? 'บันทึกแล้ว' : 'บันทึก' }}</span>
+            <span>{{ isSaved ? "บันทึกแล้ว" : "บันทึก" }}</span>
           </button>
         </div>
       </div>
@@ -71,7 +71,8 @@ let backgroundColor = computed(() => ({
 .ais-SearchBox-form input[type="search"]:focus {
   @apply outline-none;
 }
-.ais-SearchBox button[type="submit"], .ais-SearchBox button[type="reset"] {
+.ais-SearchBox button[type="submit"],
+.ais-SearchBox button[type="reset"] {
   @apply ml-3 p-1.5 rounded-full hover:bg-gray-300;
 }
 .ais-SearchBox-submitIcon {

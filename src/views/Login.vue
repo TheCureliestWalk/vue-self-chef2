@@ -1,6 +1,6 @@
 <script setup>
 import { supabase } from "../lib/supabase";
-import { onMounted, ref, toRaw } from "vue";
+import { onMounted, ref } from "vue";
 import router from "../router";
 import toastr from "toastr/toastr";
 let email = ref();

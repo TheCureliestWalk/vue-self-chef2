@@ -6,7 +6,8 @@ import Search from "@/components/Search.vue";
 </script>
 
 <template>
-  <InstantSearch />
-  <PopularIngredient />
+  <!-- <InstantSearch /> -->
+  <!-- <Search /> -->
   <RecommendedMenu />
+  <!-- <PopularIngredient /> -->
 </template>

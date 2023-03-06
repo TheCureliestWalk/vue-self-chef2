@@ -1,7 +1,7 @@
 <script setup>
-import { userStore } from "../stores/user";
+import { useUserStore } from "../stores/user";
 
-const user = userStore();
+const user = useUserStore();
 
 const userEmail = user.session.user.email;
 </script>
