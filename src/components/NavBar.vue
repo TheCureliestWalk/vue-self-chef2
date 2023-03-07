@@ -27,7 +27,7 @@ const logout = async () => {
   }
 };
 
-let isCollapsed = ref(true);
+let isCollapsed = ref(false);
 </script>
 
 <template>
@@ -38,8 +38,8 @@ let isCollapsed = ref(true);
     </div>
     <!-- Right -->
     <div class="flex flex-col gap-2">
-      <button @click="isCollapsed = !isCollapsed" class="md:invisible place-self-end text-gray-500 bg-gray-300 bg-opacity-70 hover:bg-gray-500 hover:text-white p-1"><Bars3Icon class="w-6 h-6" /></button>
-      <ul class="flex flex-col md:flex-row menu menu-horizontal px-1" :class="{ 'hidden': isCollapsed }">
+      <button @click="isCollapsed = !isCollapsed" class="md:hidden place-self-end text-gray-500 bg-gray-300 bg-opacity-70 hover:bg-gray-500 hover:text-white p-1"><Bars3Icon class="w-6 h-6" /></button>
+      <ul class="flex flex-col md:flex-row menu menu-horizontal px-1" :class="{ 'hidden' : isCollapsed }">
         <li>
           <RouterLink to="/">
             <Home class="w-4 h-4" />
