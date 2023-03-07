@@ -1,4 +1,5 @@
 <script setup>
+import { ref, computed } from "vue";
 import { RouterLink } from "vue-router";
 import Home from "./icons/Home.vue";
 import SignIn from "./icons/SignIn.vue";
@@ -10,7 +11,8 @@ import { userStore } from "../stores/user";
 import { supabase } from "../lib/supabase";
 import router from "../router";
 import toastr from "toastr/toastr";
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+import { Bars3Icon } from "@heroicons/vue/24/outline";
 
 const user = userStore();
 
@@ -24,7 +26,10 @@ const logout = async () => {
     router.push("/");
   }
 };
+
+let isCollapsed = ref(true);
 </script>
+
 <template>
   <div class="navbar bg-base-500">
     <!-- Left-->
@@ -32,8 +37,9 @@ const logout = async () => {
       <RouterLink to="/" class="btn btn-ghost normal-case text-xl">Self-Chef</RouterLink>
     </div>
     <!-- Right -->
-    <div class="flex-none">
-      <ul class="invisible sm:visible menu menu-horizontal px-1">
+    <div class="flex flex-col gap-2">
+      <button @click="isCollapsed = !isCollapsed" class="md:invisible place-self-end text-gray-500 bg-gray-300 bg-opacity-70 hover:bg-gray-500 hover:text-white p-1"><Bars3Icon class="w-6 h-6" /></button>
+      <ul class="flex flex-col md:flex-row menu menu-horizontal px-1" :class="{ 'hidden': isCollapsed }">
         <li>
           <RouterLink to="/">
             <Home class="w-4 h-4" />

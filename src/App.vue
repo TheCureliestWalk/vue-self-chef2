@@ -8,7 +8,7 @@ import { supabase } from "@/lib/supabase";
 
 <template>
   <NavBar />
-  <header class="flex flex-col space-y-4 items-center p-8 w-full h-128 bg-amber-300 text-white object-cover bg-cover bg-center" style="background-image: url('https://vue-self-chef.netlify.app/bg.jpg');">
+  <header class="flex flex-col space-y-4 items-center p-8 w-full h-128 bg-amber-300 text-white object-cover bg-cover bg-center" style="background-image: url('https://vue-self-chef.netlify.app/bg.jpg')">
     <div class="p-6 mt-3 backdrop-blur-sm rounded bg-white/30 text-center">
       <h1 class="text-4xl">Self-Chef</h1>
       <h3 class="text-sm">มีวัตถุดิบ แต่ไม่รู้จะทำอะไร?</h3>

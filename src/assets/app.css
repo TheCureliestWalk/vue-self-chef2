@@ -25,11 +25,11 @@ h3 {
 }
 
 .form-control-custom input {
-    @apply p-4 border ring ring-1 ring-gray-200 p-2 ml-3 shadow-md;
+    @apply p-4 border ml-3 shadow-md;
 }
 
 .form-control-custom input:disabled {
-    @apply p-4 border;
+    @apply bg-slate-200;
 }
 
 .form-control-custom input:focus {
@@ -50,7 +50,7 @@ h3 {
 }
 
 .form-control-custom button:hover {
-    @apply bg-amber-500;
+    @apply bg-amber-400 text-amber-700;
 }
 
 li {

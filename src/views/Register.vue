@@ -1,5 +1,5 @@
 <template>
-   <h1 class="flex justify-center">สมัครสมาชิก</h1>
+  <h1 class="flex justify-center">สมัครสมาชิก</h1>
   <form method="POST" class="form-control-custom">
     <label for="username">ชื่อผู้ใช้</label>
     <input type="text" name="username" id="username" placeholder="ชื่อผู้ใช้ 3 ตัวขึ้นไป" />
