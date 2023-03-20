@@ -38,19 +38,19 @@ const router = createRouter({
       component: () => import("../views/Management.vue"),
     },
     {
-      path: "/newlist",
-      name: "newlist",
-      component: () => import("../views/NewList.vue"),
-    },
-    {
-      path: "/search",
-      name: "search",
-      component: () => import("../views/Search.vue"),
+      path: "/new",
+      name: "new",
+      component: () => import("../views/food/New.vue"),
     },
     {
       path: "/save",
       name: "save",
       component: () => import("../views/Save.vue"),
+    },
+    {
+      path: "/edit/:id",
+      name: "edit",
+      component: () => import("../views/food/Edit.vue"),
     },
   ],
 });

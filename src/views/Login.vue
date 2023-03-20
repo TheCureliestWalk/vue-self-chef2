@@ -27,10 +27,10 @@ const login = async () => {
 <template>
   <h1 class="flex justify-center">เข้าสู่ระบบ</h1>
   <form @submit.prevent="login" class="form-control-custom">
-    <label for="email">ชื่อผู้ใช้/อีเมลล์</label>
+    <label for="email">📧 ชื่อผู้ใช้/อีเมลล์</label>
     <input type="text" name="email" id="email" placeholder="john@doe.com" v-model="email" />
-    <label for="password">รหัสผ่าน</label>
+    <label for="password">🔑 รหัสผ่าน</label>
     <input type="password" name="password" id="password" placeholder="รหัสผ่านที่เคยสมัคร" v-model="password" />
-    <button type="submit">เข้าสู่ระบบ</button>
+    <button type="submit">✨ เข้าสู่ระบบ</button>
   </form>
 </template>

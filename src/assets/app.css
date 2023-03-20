@@ -24,8 +24,12 @@ h3 {
     @apply flex flex-col gap-3 max-w-md mx-auto mt-3 mb-4;
 }
 
+.form-control-custom label {
+    @apply font-bold;
+}
+
 .form-control-custom input {
-    @apply p-4 border ml-3 shadow-md;
+    @apply p-4 border shadow-md;
 }
 
 .form-control-custom input:disabled {
