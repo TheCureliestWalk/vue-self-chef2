@@ -1,40 +1,3 @@
-<script setup>
-import { ref, computed } from "vue";
-import { RouterLink } from "vue-router";
-import Home from "./icons/Home.vue";
-import SignIn from "./icons/SignIn.vue";
-import NewUser from "./icons/NewUser.vue";
-import SignOut from "./icons/SignOut.vue";
-import Settings from "./icons/Settings.vue";
-import About from "./icons/About.vue";
-import { userStore } from "../stores/user";
-import { supabase } from "../lib/supabase";
-import router from "../router";
-import toastr from "toastr/toastr";
-import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
-import { Bars3Icon } from "@heroicons/vue/24/outline";
-
-const user = userStore();
-
-const gravatarImg = () => {
-  const email = user.session.user.email;
-  const hash = md5(email);
-  return `https://www.gravatar.com/avatar/${hash}?s=200`;
-}
-const logout = async () => {
-  try {
-    await supabase.auth.signOut();
-  } catch (e) {
-    console.error(e.message);
-  } finally {
-    toastr.info("ออกจากระบบเรียบแล้ว");
-    router.push("/");
-  }
-};
-
-let isOpen = ref(false);
-</script>
-
 <template>
   <nav class="bg-base-700">
     <div class="mx-auto max-w-2xl px-2 sm:px-6 lg:px-8">
@@ -64,19 +27,19 @@ let isOpen = ref(false);
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
             <a href="/" class="font-bold normal-case text-xl pointer-cursor">Self-Chef</a>
-        </div>
-        <div class="hidden sm:ml-6 sm:block">
-          <div class="flex space-x-4">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <RouterLink to="/" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 rounded-md px-3 py-2 text-sm font-medium" aria-current="page">
-              <Home class="w-4 h-4" />
-              <span>หน้าหลัก</span>
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <RouterLink to="/" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 rounded-md px-3 py-2 text-sm font-medium" aria-current="page">
+                <Home class="w-4 h-4" />
+                <span>หน้าหลัก</span>
               </RouterLink>
 
-            <RouterLink v-if="!user.session" to="/register" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 hover:text-black rounded-md px-3 py-2 text-sm font-medium">
-              <NewUser class="w-4 h-4" />
-              <span>สมัครสมาชิก</span>
-            </RouterLink>
+              <RouterLink v-if="!user.session" to="/register" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 hover:text-black rounded-md px-3 py-2 text-sm font-medium">
+                <NewUser class="w-4 h-4" />
+                <span>สมัครสมาชิก</span>
+              </RouterLink>
 
               <RouterLink v-if="!user.session" to="/login" href="#" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 hover:text-black rounded-md px-3 py-2 text-sm font-medium">
                 <SignIn class="w-4 h-4" />
@@ -89,14 +52,13 @@ let isOpen = ref(false);
             </div>
           </div>
         </div>
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
+        <div v-if="user.session" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <!-- Profile dropdown -->
           <div class="relative ml-3" v-on:click="isOpen = !isOpen">
             <div>
               <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full" :src="gravatarImg">
+                <img class="h-8 w-8 rounded-full" :src="gravatarImg" />
               </button>
             </div>
 
@@ -118,7 +80,8 @@ let isOpen = ref(false);
               </RouterLink>
               <a v-if="user.session" href="#" @click.prevent="logout" class="flex gap-2 items-center px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">
                 <SignOut class="w-4 h-4" />
-                ออกจากระบบ</a>
+                ออกจากระบบ
+              </a>
             </div>
           </div>
         </div>
@@ -129,26 +92,72 @@ let isOpen = ref(false);
     <div @click="isOpen = !isOpen" class="sm:hidden" id="mobile-menu">
       <div v-if="isOpen" class="space-y-1 px-2 pt-2 pb-3 flex flex-col">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <RouterLink to="/" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 rounded-md px-3 py-2 text-sm font-medium" aria-current="page">
-                <Home class="w-4 h-4" />
-                <span>หน้าหลัก</span>
-                </RouterLink>
+        <RouterLink to="/" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 rounded-md px-3 py-2 text-sm font-medium" aria-current="page">
+          <Home class="w-4 h-4" />
+          <span>หน้าหลัก</span>
+        </RouterLink>
 
-              <RouterLink v-if="!user.session" to="/register" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 hover:text-black rounded-md px-3 py-2 text-sm font-medium">
-                <NewUser class="w-4 h-4" />
-                <span>สมัครสมาชิก</span>
-              </RouterLink>
+        <RouterLink v-if="!user.session" to="/register" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 hover:text-black rounded-md px-3 py-2 text-sm font-medium">
+          <NewUser class="w-4 h-4" />
+          <span>สมัครสมาชิก</span>
+        </RouterLink>
 
-                <RouterLink v-if="!user.session" to="/login" href="#" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 hover:text-black rounded-md px-3 py-2 text-sm font-medium">
-                  <SignIn class="w-4 h-4" />
-                  <span>เข้าสู่ระบบ</span>
-                </RouterLink>
-                <RouterLink to="/about" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 hover:text-black rounded-md px-3 py-2 text-sm font-medium">
-                  <About class="w-4 h-4" />
-                  <span>เกี่ยวกับ</span>
-                </RouterLink>
+        <RouterLink v-if="!user.session" to="/login" href="#" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 hover:text-black rounded-md px-3 py-2 text-sm font-medium">
+          <SignIn class="w-4 h-4" />
+          <span>เข้าสู่ระบบ</span>
+        </RouterLink>
+        <RouterLink to="/about" class="flex gap-2 items-center text-gray-700 hover:bg-gray-300 hover:text-black rounded-md px-3 py-2 text-sm font-medium">
+          <About class="w-4 h-4" />
+          <span>เกี่ยวกับ</span>
+        </RouterLink>
       </div>
     </div>
   </nav>
-
 </template>
+
+<script setup>
+import { ref, computed } from "vue";
+import { RouterLink } from "vue-router";
+import Home from "./icons/Home.vue";
+import SignIn from "./icons/SignIn.vue";
+import NewUser from "./icons/NewUser.vue";
+import SignOut from "./icons/SignOut.vue";
+import Settings from "./icons/Settings.vue";
+import About from "./icons/About.vue";
+import { userStore } from "../stores/user";
+import { supabase } from "../lib/supabase";
+import router from "../router";
+import toastr from "toastr/toastr";
+import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+import { Bars3Icon } from "@heroicons/vue/24/outline";
+
+const user = userStore();
+
+const gravatarImg = () => {
+  const email = user.session.user.email;
+  const hash = md5(email);
+  return `https://www.gravatar.com/avatar/${hash}?s=200`;
+};
+const logout = async () => {
+  try {
+    await supabase.auth.signOut();
+  } catch (e) {
+    console.error(e.message);
+  } finally {
+    toastr.info("ออกจากระบบเรียบแล้ว");
+    router.push("/");
+  }
+};
+
+let isOpen = ref(false);
+
+const menuDefault = [{
+  name: "หน้าหลัก", to: '/', icon: "", hideSignedIn: false
+}, {
+  name: "สมัครสมาชิก", to: '/register', icon: "", hideSignedIn: true
+}, {
+  name: "เข้าสู่ระบบ", to: '/login', icon: "", hideSignedIn: true
+}, {
+  name: "เกี่ยวกับ", to: '/about', icon: "", hideSignedIn: false
+}]
+</script>

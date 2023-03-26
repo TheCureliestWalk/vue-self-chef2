@@ -1,0 +1,11 @@
+{
+    "include": ["./src/**/*"],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"],
+            "jq": ["./node_modules/jquery/dist/jquery.min.js"]
+        }
+    }
+    
+}

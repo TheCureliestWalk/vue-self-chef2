@@ -7,7 +7,7 @@ let user = userStore();
 
 <template>
   <div class="mt-3 mb-4 max-w-lg mx-auto space-y-4">
-    <h1>เกี่ยวกับ</h1>
+    <h1>🧠 เกี่ยวกับ</h1>
     <p>
       เว็บไซต์นี้ได้จัดทำเนื่องจากโปรเจควิชา
       <strong>Entrepreneur Spirit Incubation (ESI)</strong>

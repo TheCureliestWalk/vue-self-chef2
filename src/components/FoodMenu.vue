@@ -11,19 +11,19 @@
               <h1 class="pt-4 pl-4 text-4xl w-full bg-slate-700 bg-opacity-10">{{ modalData.name ?? "ไม่ได้ระบุ" }}</h1>
             </DialogTitle>
             <DialogDescription class="p-4 space-y-3">
-              <h2> 🌿 คำอธิบาย</h2>
+              <h2>🌿 คำอธิบาย</h2>
               <p>{{ modalData.description ?? "ไม่ได้ระบุ" }}</p>
-              <h2> 🥚 ส่วนผสม</h2>
+              <h2>🥚 ส่วนผสม</h2>
               <ul>
                 <li class="cursor-pointer inline-block bg-green-100 hover:bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-green-700 mr-2 mb-2" v-for="ingredient in modalData.ingredient">{{ ingredient ?? "ไม่ได้ระบุ" }}</li>
               </ul>
-              <h2> ✨ วิธีทำ</h2>
+              <h2>✨ วิธีทำ</h2>
               <div class="prose">{{ modalData.step ?? "ไม่ได้ระบุ" }}</div>
-              <h2> 🏷 แท็ก</h2>
+              <h2>🏷 แท็ก</h2>
               <ul class="flex gap-3">
                 <li v-for="tag in modalData.tag" class="list-none rounded bg-pink-100 hover:bg-pink-300 text-pink-700 px-2 py-1 cursor-pointer">{{ tag ?? "ไม่ได้ระบุ" }}</li>
               </ul>
-              <h2> 🔦 อ้างอิง</h2>
+              <h2>🔦 อ้างอิง</h2>
               <ul class="flex gap-3">
                 <li class="list-none rounded bg-blue-100 hover:bg-blue-300 text-blue-700 px-2 py-1 cursor-pointer">{{ modalData.source ?? "ไม่ได้ระบุ" }}</li>
               </ul>
@@ -37,9 +37,13 @@
       </div>
     </Dialog>
   </TransitionRoot>
-
+  <div class="my-3 flex flex-col justify-center items-center gap-2.5">
+    <h2 class="text-center">คิดเมนูอาหารไม่ออก?</h2>
+    <button @click="randomMenu" class="shadow w-full max-w-md bg-gradient-to-r from-indigo-500 to-sky-500 text-white p-3.5 rounded hover:from-indigo-700 hover:to-sky-700 transition-all duration-200">❔สุ่มเมนูอาหาร</button>
+  </div>
+  
   <!-- Search Bar -->
-  <h1 class="my-4 text-center">ค้นหาเมนู</h1>
+  <h1 class="my-4 text-center">🔍 ค้นหาเมนู</h1>
   <div class="max-w-md mx-auto">
     <div class="relative flex items-center rounded-lg shadow-lg overflow-hidden">
       <div class="grid place-items-center h-full w-12">
@@ -47,11 +51,11 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
         </svg>
       </div>
-      <input type="text" class="p-4 focus:outline-none peer h-full w-full pr-2 input max-w-md" placeholder="พริก, ต้นหอม, ..." v-model="searchInput" />
+      <input type="text" class="p-4 focus:outline-none peer h-full w-full pr-2 input max-w-md" placeholder="พริก, ต้นหอม, ..." v-model="searchInput" @change="foodSearchResult" />
     </div>
     <div class="flex items-end justify-center">
       <SwitchLabel class="mr-4">ค้นหาจากวัตถุดิบ</SwitchLabel>
-      <Switch @click="isChecked = !isChecked" v-model="isChecked" :class="isChecked ? 'bg-amber-400' : 'bg-gray-200'" class="mt-4 relative inline-flex h-6 w-11 items-center rounded-full">
+      <Switch @click="switchAction" v-model="isChecked" :class="isChecked ? 'bg-amber-400' : 'bg-gray-200'" class="mt-4 relative inline-flex h-6 w-11 items-center rounded-full">
         <span class="sr-only">Enable notifications</span>
         <span :class="isChecked ? 'translate-x-6' : 'translate-x-1'" class="inline-block h-4 w-4 transform rounded-full bg-white transition" />
       </Switch>
@@ -59,7 +63,7 @@
   </div>
 
   <!-- Recomended Menu -->
-  <h1 class="my-4">เมนูอาหารแนะนำ</h1>
+  <h1 class="my-4 text-center">🍛 เมนูอาหารแนะนำ</h1>
   <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-8 space-y-6">
     <div v-for="x in foodSearchResult" :key="x.id" class="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer hover:-translate-y-4 hover:scale-110 duration-100">
       <img class="w-full object-cover h-48" :src="x.picture_url" :alt="x.name" @click="fireModal(x)" />
@@ -74,7 +78,7 @@
         <span v-for="tag in x.tag" class="inline-block bg-pink-100 hover:bg-pink-200 rounded-full px-3 py-1 text-xs font-semibold text-pink-700 mr-2 mb-2">#{{ tag ?? "ไม่ได้ระบุ" }}</span>
       </div>
       <!-- Action buttons -->
-      <div class="flex w-full justify-center p-1">
+      <div v-if="user.session" class="flex w-full justify-center p-1">
         <button @click="editAction(x)" class="flex p-1.5 gap-2 items-center hover:bg-gray-100 text-gray-700 text-sm px-2 rounded">
           <!-- <PencilIcon class="w-4 h-4" /> -->
           <span>🖊 แก้ไข</span>
@@ -94,9 +98,10 @@
       </div>
     </div>
   </div>
+  <h3 v-if="foodSearchResult.length === 0" class="text-center">~ 😲 ไม่พบเมนูอาหาร ~</h3>
 
   <!-- Popular Ingredient -->
-  <h1 class="my-4">วัตถุดิบยอดนิยม</h1>
+  <h1 class="my-4 text-center">🦐 วัตถุดิบยอดนิยม</h1>
   <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-8 space-y-6">
     <div v-for="x in ingredientSearchResult" class="cursor-pointer max-w-sm rounded overflow-hidden shadow-lg mx-auto hover:shadow-xl hover:backdrop-brightness-70 hover:bg-white/90 hover:-translate-y-4 hover:scale-110 duration-100" @click="fireModal(x)">
       <img class="w-full object-cover h-48" :src="x.picture_url" :alt="x.name" />
@@ -108,10 +113,11 @@
       </div>
     </div>
   </div>
+  <h3 v-if="ingredientSearchResult.length === 0" class="text-center">~ 😲 ไม่พบวัตถุดิบ ~</h3>
 </template>
 
 <script setup>
-import { ref, onMounted, watch, computed } from "vue";
+import { ref, onMounted, watch, computed, reactive } from "vue";
 import router from "../router";
 import { userStore } from "../stores/user";
 import { supabase } from "../lib/supabase";
@@ -126,7 +132,7 @@ const user = userStore();
 const bookmark = ref([]);
 const editAction = (food) => {
   router.push({ name: "edit", params: { id: food.id } });
-}
+};
 if (localStorage.setItem("name", "Iho")) {
   console.log("localStorage enabled!");
 }
@@ -153,18 +159,32 @@ const fireModal = (food) => {
   return modalData;
 };
 
+const randomMenu = () => {
+    const result = Math.floor(Math.random() * foods.value.length);
+    return fireModal(foods.value[result]);
+}
+
+const switchAction = () => {
+  isChecked.value = !isChecked.value;
+};
 const foods = ref([]);
 const ingredients = ref([]);
-let searchInput = ref("");
-let foodSearchResult = computed(() =>
-  foods.value.filter((x) => {
-    return x.name.includes(searchInput.value);
-  })
-);
+const searchInput = ref("");
+let foodSearchResult = computed(() => {
+  if (isChecked.value) {
+    return foods.value.filter((food, index, arr) => {
+      return JSON.stringify(arr[index].ingredient).includes(searchInput?.value || "");
+    });
+  } else {
+    return foods.value.filter((food) => {
+      return food.name.includes(searchInput?.value || "");
+    });
+  }
+});
 
 let ingredientSearchResult = computed(() =>
   ingredients.value.filter((x) => {
-    return x.name.includes(searchInput.value);
+    return x.name.includes(searchInput?.value || "");
   })
 );
 // Log on console every input value
@@ -173,17 +193,17 @@ watch(isChecked, () => console.log(isChecked.value));
 
 const getFoods = async () => {
   const { data } = await supabase.from("foods").select();
-  foods.value = data;
+  foods.value = [...data];
   //console.log(foods.value);
 };
 
 const getIngredient = async () => {
   const { data } = await supabase.from("ingredients").select();
-  ingredients.value = data;
+  ingredients.value = [...data];
 };
 
 const save = (food) => {
-  toastr.success('บันทึกสำเร็จ!')
+  toastr.success("บันทึกสำเร็จ!");
   if (localStorage.getItem("savedFoods") !== null) {
     let savedFoods = localStorage.getItem("savedFoods");
   } else {
