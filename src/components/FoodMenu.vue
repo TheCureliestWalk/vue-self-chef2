@@ -28,7 +28,7 @@
                 <li class="list-none rounded bg-blue-100 hover:bg-blue-300 text-blue-700 px-2 py-1 cursor-pointer">{{ modalData.source ?? "ไม่ได้ระบุ" }}</li>
               </ul>
             </DialogDescription>
-            <div class="flex flex-row-reverse gap-4 px-4 pb-4 pt-4">
+             <div class="flex flex-row-reverse gap-4 px-4 pb-4 pt-4">
               <button @click="setIsOpen(false)" class="py-2 px-4 rounded bg-purple-200 hover:bg-purple-300 text-purple-700">🔎 ไปยังเว็บไซต์ต้นทาง</button>
               <button @click="setIsOpen(false)" class="py-2 px-4 rounded bg-red-200 hover:bg-red-300 text-red-700">🚫 ออก</button>
             </div>
